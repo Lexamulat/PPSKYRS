@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta id="vp" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groupworld HTML5 Conference Room</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+          integrity="sha384-MI32KR77SgI9QAPUs+6R7leEOwtop70UsjEtFEezfKnMjXWx15NENsZpfDgq8m8S" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+          integrity="sha384-604wwakM23pEysLJAhja8Lm42IIwYrJ0dEAqzFsj9pJ/P5buiujjywArgPCi8eoz" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"
+            integrity="sha384-EKxMxgJ+EnnZ5yB3ygGPe1lXaPvlAzKFXU+wW7kO9Bn9ZCgFRrc3wWtCnsDHbemf"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="//www.groupboard.com/newui.css">
+    <link rel="stylesheet" href="//www.groupworld.net/style.css" type="text/css">
+    <script type="text/javascript" src="//www.groupworld.net/codecogs_editor3.js"></script>
+    <script type="text/javascript"> function setupequation() {
+        if (null != editorwindow && null != editorwindow.document) {
+            if (null != editorwindow.document.getElementById('format')) {
+                editorwindow.document.getElementById('format').selectedIndex = 1;
+                editorwindow.document.getElementById('bg').selectedIndex = 1;
+            }
+        }
+    }
+
+    function checktestbox() {
+        var t = document.getElementById('testbox');
+        if (null != t && t.value != "") {
+            alert("To copy the equation into Groupworld, simply drag the equation image onto the whiteboard");
+            t.value = "";
+        }
+    } </script>
+    <link rel="stylesheet" type="text/css" href="//www.groupworld.net/js/dialog.css">
+    <link rel="stylesheet" type="text/css" href="//www.groupworld.net/js/jquery-linedtextarea/jquery-linedtextarea.css">
+    <script type="text/javascript"
+            src="//www.groupworld.net/js/jquery-linedtextarea/jquery-linedtextarea.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/txted.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/aes-enc.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/aes-dec.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/aes-test.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/sha1.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/newbase64.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/dialog.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/tunnel.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/gsm610.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/groupworld.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/deskshare.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/polls.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/jscolor/jscolor.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/new_conference.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/new_whiteboard.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/new_videostrip.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/chat.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/jspdf.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/jspdf.plugin.addimage.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/FileSaver.min.js"></script>
+
+    <!-- Janus Gateway, for multi-party WebRTC -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.0.3/adapter.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/janus/janus.min.js"></script>
+    <script type="text/javascript" src="//www.groupworld.net/js/janus_videoroom.min.js"></script>
+    <script type="text/javascript">new_videostrip.janus_webrtc = true;</script>
+
+    <!-- Emojis -->
+    <link rel="stylesheet" type="text/css"
+          href="//www.groupworld.net/js/jquery-emoji-picker-master/css/jquery.emojipicker.css">
+    <link rel="stylesheet" type="text/css"
+          href="//www.groupworld.net/js/jquery-emoji-picker-master/css/jquery.emojipicker.twcdn.css">
+    <script type="text/javascript"
+            src="//www.groupworld.net/js/jquery-emoji-picker-master/js/jquery.emojipicker.min.js"></script>
+    <script async type="text/javascript"
+            src="//www.groupworld.net/js/jquery-emoji-picker-master/js/jquery.emojis.min.js"></script>
+    <script type="text/javascript">
+
+        function getCookie(c_name) {
+            var i, x, y, ARRcookies = document.cookie.split(';');
+            for (i = 0; i < ARRcookies.length; i++) {
+                x = ARRcookies[i].substr(0, ARRcookies[i].indexOf('='));
+                y = ARRcookies[i].substr(ARRcookies[i].indexOf('=') + 1);
+                x = x.replace(/^\s+|\\s+$/g, '');
+                if (x == c_name) {
+                    return unescape(y);
+                }
+            }
+        }
+
+        function setCookie(c_name, value, exdays) {
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + exdays);
+            var c_value = escape(value) + ((exdays == null) ? '' : '; expires=' + exdate.toUTCString());
+            document.cookie = c_name + '=' + c_value + ';path=/';
+        }
+
+        var agt = navigator.userAgent.toLowerCase();
+        var is_ipad = (agt.indexOf('ipad') != -1);
+        var is_iphone = (agt.indexOf('iphone') != -1);
+        var is_mobile = (agt.indexOf('mobile') != -1);
+        var is_android = ((agt.indexOf('ventana') != -1) || (agt.indexOf('android') != -1));
+
+        if ('2802' == '') {
+            document.write("inst_id parameter missing. Please check the url.");
+        }
+        if ('2802' == '1049') {
+            window.location = "https://www.groupworld.net/mp/parse.cgi?filename=compmathtutor_js.html&instance=conf1&width=100%&height=100%&show_room_name=&show_timer=&inst_id=2802&username=alex&password=&janus=true";
+        }
+
+        function start(dont_ask_app) {
+            var suggest_app = false;
+
+            if (screen.width < 800 && screen.height < 800) {
+                var mvp = document.getElementById('vp');
+                mvp.setAttribute('content', 'user-scalable=no,width=800');
+            }
+            if (suggest_app && !dont_ask_app) {
+                var app_url = 'groupworld://www.groupworld.net?instance=conf1&object=new_conference&installation_id=2802';
+                if (is_iphone || is_ipad || is_android) {
+                    var appstore_url = 'https://itunes.apple.com/us/app/groupworld/id474262955?ls=1&amp;mt=8';
+                    if (is_android) {
+                        appstore_url = 'https://market.android.com/details?id=com.grouptechnologies.groupworld';
+                    }
+                    var has_app = getCookie('has_groupworld_app');
+                    var msg = 'For the best experience, we recommend that you use';
+                    if (has_app) {
+                        if (is_android) {
+                            REDIPS.dialog.showhtml(250, 150, '<div style="width:250px"><p class="medium">' + msg + ' the Groupworld App. Launch the Groupworld App Now?</p><button onclick=\'REDIPS.dialog.hide();window.location = "' + app_url + '"; return false\'>Launch App</button>&nbsp;&nbsp; <button onclick=\'REDIPS.dialog.hide();start(true); return false\'>Continue using browser</button></div> ');
+                            return;
+                        } else {
+                            if (confirm(msg + ' the Groupworld App. Launch the Groupworld App Now?')) {
+                                window.location = app_url;
+                                return;
+                            }
+                        }
+                    } else {
+                        REDIPS.dialog.showhtml(250, 150, '<div style="width:250px"><p class="medium">' + msg + ' the Groupworld App. Install the Groupworld App Now?</p><button class="actionsheet_button" onclick=\'REDIPS.dialog.hide();setCookie("has_groupworld_app", "true", 20000); window.location = "' + appstore_url + '"; return false\'>Install App</button><br><button class="actionsheet_button" onclick=\'REDIPS.dialog.hide();window.location = "' + app_url + '"; return false\'>Launch App (if already installed)</button><br><button class="actionsheet_button" onclick=\'REDIPS.dialog.hide();start(true); return false\'>Continue using browser</button></div> ');
+                        return;
+                    }
+                }
+            }
+
+            // Optional username and password. If not specified here, a popup dialog
+            // box will appear.
+            var username = "alex";
+            var password = "";
+
+            if (window.location.protocol == 'https:') {
+                groupworld.tunnel_port = 443;
+            } else {
+                groupworld.tunnel_port = 80;
+            }
+
+            // The GroupWorld server to connect to. You can optionally specify the
+            // port number and installation id (using the format "server:port:install_id").
+            var base = 'www.groupworld.net:' + groupworld.tunnel_port + ':2802';
+
+            // The object to load and instance name. To create a different "session",
+            // just copy the html page and change the instance name (the part after
+            // the ":").
+            // var object = 'new_conference:conf1';
+
+            function parseQuery(query) {
+                var searchMap = {};
+                var cutQuery = query.substring(1);
+                var vars = cutQuery.split('&');
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split('=');
+                    searchMap[`${pair[0]}`] = pair[1]
+                }
+                return searchMap
+            }
+
+            var searchValuesMap = parseQuery(window.location.search);
+            var roomId = searchValuesMap['roomId'];
+
+            var object = `new_conference:${roomId}`;
+
+
+            // Flags: not currently used.
+            var flags = 0;
+            groupworld.startup(username, password, base, object, flags);
+        }
+
+    </script>
+    <style>
+        /* Bug in Chrome: if you draw on the whiteboard and move off the top,
+           Chrome will select a bunch of stuff which will then be dragged the next
+           time you click on the whiteboard. To fix, we just turn off selection for
+           all elements. */
+        * {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+        }
+
+        /* Allow inputs and chat text area to be selectable
+         */
+        input, textarea, #chat_area, #text_editor, .remote_text, .our_text, .ql-editor * {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+        }
+
+        /* Disable touch behaviours (pan/zoom) on the canvas elements,
+           so that the events are sent to the application instead. */
+        canvas {
+            touch-action: none;
+        }
+
+        /* Prevent double-tapping from zooming on iOS */
+        .fa, .topbuts {
+            touch-action: manipulation;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            padding-left: 8px;
+        }
+        #record_bar_canvas{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<script src="//www.groupworld.net/js/strings.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        REDIPS.dialog.init();
+        start();
+    });
+
+    var start_time;
+
+    function timer() {
+        if (null == start_time) {
+            return;
+        }
+        var cur_time = new Date();
+        var time_diff = (cur_time.getTime() - start_time.getTime()) / 1000;
+        var hours = parseInt(time_diff / 3600);
+        var mins = parseInt((time_diff - hours * 3600) / 60);
+        var secs = parseInt(time_diff - hours * 3600 - mins * 60);
+        var t = document.getElementById("t");
+        t.innerHTML = hours + ":" + mins + ":" + secs;
+        setTimeout("timer();", 1000);
+    }
+
+</script>
+<style>
+    h1 {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .fr {
+        float: right
+    }
+</style>
+
+<script type="text/javascript">
+    var show_room_name = '';
+    var show_timer = '';
+    if (show_timer == 'true' && show_room_name !== 'true') {
+        var tm = document.getElementById('timer');
+        var n = document.createElement('h1');
+        n.innerHTML = '<h1>&nbsp</h1>';
+        tm.parentNode.insertBefore(n, tm);
+    }
+
+    new_videostrip.pc_config = {
+        'iceServers': [{urls: ['stun:stun.stunprotocol.org', 'stun:stun.l.google.com:19302']},
+            {urls: 'turn:www.groupworld.net:13135', credential: 'test', username: 'groupworld'}]
+    };
+    new_whiteboard.newui = true;
+    if ('true' == 'true') {
+        new_videostrip.options['use_webrtc'] = 'true';
+        new_whiteboard.options['default_size'] = 3;
+        new_whiteboard.options['eraser_size'] = 15;
+        new_whiteboard.options['show_share_video'] = 'true';
+        new_videostrip.options['show_auto_record'] = 'false';
+        new_whiteboard.options['multi_user_pan'] = 'false';
+        new_conference.options['use_instance_recording_dir'] = 'true';
+        new_whiteboard.options['use_scrollbars'] = 'false';
+        new_whiteboard.options['auto_zoom'] = 'true';
+        new_whiteboard.mouse_wheel_scroll = 'false';
+        new_whiteboard.options["hide_invite"] = 'true';
+        new_whiteboard.options["show_eraser"] = 'true';
+        new_whiteboard.options["movable_images"] = 'true';
+        new_whiteboard.options["show_share_video"] = 'false';
+        new_conference.options["video_width"] = 200;
+
+    }
+    // Generate the actual Groupworld object. Parameters: width and height of
+    // object
+    groupworld.htmlgen('100%', '100%');
+
+    // Hide playback link if there are no recordings
+    var r = new XMLHttpRequest();
+    r.addEventListener("load", function () {
+        var num_recordings = this.responseText;
+        if (num_recordings == 0) {
+            document.getElementById('playback_link').style.display = 'none';
+            setTimeout(groupworld.window_resize, 250);
+        }
+    });
+    // r.open("GET", "///www.groupworld.net/mp/saved_sessions.cgi?groupworld_id=2802&count=true&dir=recordings/conf1");
+    // r.send();
+</script>
+<!--<p id="playback_link"><a style="color:#337ab7" target=playback href="//www.groupworld.net/mp/saved_sessions.cgi?groupworld_id=2802&instance=conf1&dir=recordings/conf1&width=100%&height=100%&js=true&newui=true">Play back previously recorded sessions</a></p>-->
+</body>
+</html>

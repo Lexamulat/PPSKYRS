@@ -1,0 +1,55 @@
+@import './base';
+.field {
+  flex: none;
+  width: 100%;
+  @include formItemFont;
+
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  height: 100%;
+  &.withShadow {
+    background-color: transparent;
+  }
+
+
+  &.withRightIcon {
+    width: 90%;
+  }
+
+  &::placeholder {
+    color: grey;
+    opacity: 1;
+  }
+
+  &.highlightError {
+    color: $formFieldErrorColor;
+  }
+
+  &:disabled {
+    opacity: .4;
+  }
+
+
+  &::placeholder {
+    opacity: 1;
+  }
+
+
+  &.withIcon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+}
+
+.widthWithError {
+  width: 90%;
+}
+
+.fieldWithLabel {
+  position: relative;
+  bottom: 0.8rem;
+}
+

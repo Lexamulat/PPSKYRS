@@ -1,0 +1,6 @@
+@import '../../styles/theme';
+
+@mixin formItemFont {
+  font-family: $PtRoot;
+  font-size: 1rem;
+}

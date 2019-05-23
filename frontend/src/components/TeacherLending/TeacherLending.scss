@@ -1,0 +1,384 @@
+@import "../../styles/theme.scss";
+@import "../../styles/mixins.scss";
+
+
+
+.pageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: $maxPageWidth;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.fakeHeaderGrad {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100vw !important;
+  height: 40rem;
+  background: $blueLinearBackground;
+  z-index: -1;
+
+}
+
+.headerWrapper {
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  max-width: $maxPageWidth;
+  width: 100%;
+  overflow: hidden;
+
+  .logoLine {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .topLineButtonsBlock {
+      display: flex;
+    }
+
+    .logo {
+      cursor: pointer;
+      width: 15rem;
+      height: 1.5rem;
+      color:white;
+      font-weight: bold;
+      margin-left: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .headerContent {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+
+    .headerContentLeft {
+      height: 100%;
+      width: 45%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      z-index: 2;
+
+
+      .threeLinesBlockWrapper {
+        margin-left: $tutorPageLeftMargin;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+
+      }
+    }
+
+    .headerContentRight {
+      height: 100%;
+      width: 55%;
+    }
+  }
+}
+
+.line {
+  height: 2rem;
+  margin: 1rem;
+  line-height: 3.5rem;
+  font-size: 3rem;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+
+.cursiveLine {
+  margin-left: 6rem;
+  font-family: $PlexFamily;
+  font-style: italic;
+}
+
+
+@media (max-width: 1300px) {
+  .line {
+    font-size: 2.5rem;
+    margin: 0.5rem;
+  }
+
+  .cursiveLine {
+    margin-left: 5rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .line {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+    height: 1rem;
+  }
+
+  .cursiveLine {
+    margin-left: 4rem;
+  }
+  .threeLinesBlockWrapper {
+    height: 15rem !important;
+  }
+}
+
+
+.tLine {
+  justify-content: flex-end;
+
+}
+
+.applyButtonBlockWrapper {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 950px) {
+  .applyButtonBlockWrapper {
+    margin-top: 4rem;
+  }
+}
+
+.applyButtonBlock {
+  height: 2rem;
+  width: 11rem;
+}
+
+.applyButtonClassProp {
+  background-color: $blueBtnColor;
+  transition: .5s;
+}
+
+.applyDarkButtonClassProp {
+  background-color: $darkBlueBtnColor;
+}
+
+
+.findTutorWrapper {
+  height: 80rem;
+}
+
+.signBtn {
+  height: 2rem;
+  width: 3.5rem;
+  margin-right: 2rem;
+}
+
+.swithcModBtn {
+  height: 2rem;
+  width: 11rem;
+  margin-right: 2rem;
+}
+
+.buttonClassProp {
+  background-color: #3C99DE !important;
+}
+
+.person {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center
+
+}
+
+.man {
+  position: absolute;
+  right: 8vw;
+  height: 30rem;
+  
+}
+
+@media (max-width: 1100px) {
+  .man {
+    height: 20rem;
+  }
+  .headerWrapper {
+    height: 30rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .man {
+    height: 18rem;
+  }
+  .headerWrapper {
+    height: 25rem;
+  }
+}
+
+.whyBlockWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.whyBlock {
+  margin-left: $tutorPageLeftMargin;
+  width: 90%;
+}
+
+.whyline {
+  margin: 3rem 0;
+  user-select: none;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+
+  .whyFLine {
+    font-style: italic;
+    font-size: 3rem;
+    font-family: $PlexFamily;
+  }
+
+  .whySLine {
+    margin: 1rem 0 0 4rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: $PtRoot;
+  }
+}
+
+.questionline {
+  width: 84%;
+  height: 10rem;
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+.questionLeft {
+  width: 60%;
+  height: 100%;
+
+  .questionLeftFLine {
+    width: 100%;
+    height: 2rem;
+    font-size: 2rem;
+    font-family: $PlexFamily;
+    font-style: italic;
+    color: #66BDFF;
+  }
+
+  .questionLeftSLine {
+    width: 100%;
+    height: calc(100% - 2rem);
+    font-family: $PtRoot;
+    display: flex;
+    align-items: center;
+    margin-left: 3.5rem;
+    font-size: 1.5rem;
+
+  }
+}
+
+.questionRight {
+  width: 40%;
+  height: 100%;
+}
+
+.questionSVG {
+  width: 90%;
+  height: 100%;
+  background-size: contain !important;
+  //background-position: left;
+
+}
+
+.question1 {
+  background: url(assets/tutorPage/01question.svg) no-repeat center;
+}
+
+.question2 {
+  background: url(assets/tutorPage/02question.svg) no-repeat center;
+}
+
+.question3 {
+  background: url(assets/tutorPage/03question.svg) no-repeat center;
+}
+
+.question4 {
+  background: url(assets/tutorPage/04question.svg) no-repeat center;
+}
+
+.getStartedBlock {
+  position: relative;
+  width: 100%;
+  height: 32rem;
+  display: flex;
+  flex-direction: column;
+
+  .getStartedBlockWhiteLine {
+    width: 100%;
+    height: 30%;
+  }
+
+  .getStartedBlockBlueLine {
+    width: 100%;
+    flex: 1;
+    background: $blueLinearBackground;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .getStarted {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .getStartedText {
+        font-family: $PtRoot;
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+
+  }
+}
+
+.startedApplyButtonClassProp {
+  background-color: #2802af;
+}
+
+
+
+@media (max-width: 1100px) {
+  .rightHuman {
+
+    width: 14rem;
+    height: 22rem;
+  }
+
+  .leftHumans {
+    width: 20rem;
+    height: 22rem;
+  }
+  .getStartedBlock {
+    height: 22rem;
+  }
+
+  .getStartedText {
+    font-size: 1.5rem;
+    font-family: $PlexFamily;
+  }
+}

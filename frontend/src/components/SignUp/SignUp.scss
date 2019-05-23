@@ -1,0 +1,171 @@
+@import "../../styles/theme.scss";
+@import "../../styles/mixins";
+
+.formTitle {
+  height: 3.5rem;
+  width: 100%;
+  font-family: $PtRoot;
+  font-weight: 600;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.formWrapper {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.form {
+  @include form();
+}
+
+.signUpButtonWrapper {
+  margin-top: 1rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alreadyHaveWrapper {
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonClassProp {
+  background-color: $blueBtnColor;
+  color: white;
+}
+
+.signUpButton {
+  width: 20rem;
+  height: 3rem;
+}
+
+
+.signUpButtonClassProp {
+  z-index: 3;
+  background-color: $blueBtnColor;
+  font-size: 1rem;
+}
+
+
+.alreadyHaveAccount {
+  font-size: 0.88rem;
+  font-family: $PtRoot;
+  color: $formFieldGreyColor;
+  cursor: pointer;
+  transition: $hoverTransition;
+}
+
+.alreadyHaveAccount:hover {
+  color: $formFieldGreyHoverColor;
+}
+
+
+//thanks
+
+.topContent {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botContent {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $PtRoot;
+
+  .thanksText {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .thanksTextSmall {
+    font-size: 0.88rem;
+    line-height: 1.3rem;
+  }
+
+  .boldEmail {
+    font-weight: 600;
+  }
+
+  .didntGetEmail {
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    line-height: 1.3rem;
+  }
+}
+
+.thanks {
+  width: 10rem;
+  height: 10rem;
+  background: url(assets/signUpPage/thanks.svg) no-repeat center;
+}
+
+.resendEmailButton {
+  margin: 2rem;
+  width: 18rem;
+  height: 3rem;
+}
+
+//result
+.verifResultWrapper {
+  padding: 2rem;
+  z-index: 1;
+  width: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: white;
+  border-radius: 5px;
+
+  .resultTextWrapper {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .resultText {
+      font-family: $PtRoot;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+  }
+
+  .goToTutorButton {
+    margin-top: 2rem;
+    width: 18rem;
+    height: 3rem;
+  }
+}
+
+.resultSVG {
+
+  width: 10rem;
+  height: 10rem;
+  background: url(assets/signUpPage/result.svg) no-repeat center;
+}
+
+
+.errorMessage {
+  top: 35rem;
+}

@@ -1,0 +1,28 @@
+{
+  "restApiRoot": "/api",
+  "host": "0.0.0.0",
+  "port": 3412,
+  "remoting": {
+    "context": false,
+    "rest": {
+      "handleErrors": false,
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "50mb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false
+  },
+  "serviceEmail": "verifyTestMe@gmail.com",
+  "frontendUrl": "https://quemonster.demo.forasoft.com",
+  "confirmRegisterLinkSubject": "Register link",
+  "resetPassLinkSubject": "Reset pass link"
+
+
+}

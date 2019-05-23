@@ -1,0 +1,153 @@
+@import "../../styles/theme.scss";
+@import "../../styles/mixins";
+
+
+.checkBox {
+  width: 10rem;
+  color: $formFieldGreyColor;
+  font-size: 1rem;
+}
+
+.rememberMeWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: $formFieldGreyColor;
+  font-family: $PtRoot;
+  font-size: 0.88rem;
+}
+
+
+.createAccountWrapper {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.checkBoxLine {
+  width: 20rem;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: $blueLinearBackground;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.logoWrapper {
+  width: 100%;
+  height: calc((100vh - 20rem) / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .logo {
+    height: 3rem;
+    width: 12rem;
+  }
+}
+
+
+.formTitle {
+  height: 5rem;
+  width: 100%;
+
+  font-family: $PtRoot;
+  font-weight: 600;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.formWrapper {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.form {
+  @include form();
+  height: 24rem;
+}
+
+.signUpButtonWrapper {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.signUpButton {
+  width: 20rem;
+  height: 3rem;
+}
+
+.signUpButtonClassProp {
+  z-index: 3;
+  background-color: $blueBtnColor;
+  font-size: 1rem;
+  color:white;
+}
+
+
+.signUpRight {
+  position: absolute;
+  width: 38rem;
+  bottom: 0;
+  right: 2rem;
+  height: 26rem;
+  background: url(assets/signUpPage/signUpRight.svg) no-repeat center;
+
+}
+
+.createAccount {
+  font-size: 0.88rem;
+  font-family: $PtRoot;
+  color: $formFieldGreyColor;
+  cursor: pointer;
+  transition: $hoverTransition;
+
+}
+
+.createAccount:hover {
+  color: $formFieldGreyHoverColor;
+}
+
+.fakeBtn {
+  display: none;
+}
+
+
+.signUpLeft {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: calc((100vw - 20rem) / 2);
+}
+
+.hoverClass {
+  transition: $hoverTransition;
+  cursor: pointer;
+}
+
+.hoverClass:hover {
+  color: $formFieldGreyHoverColor;
+}

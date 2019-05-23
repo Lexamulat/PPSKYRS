@@ -1,0 +1,79 @@
+@import '../../styles/theme';
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  font-family: 'MetropolisRegular';
+}
+
+.topLine {
+  height: 4.5rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoWrapper {
+  margin-right: 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+  color: $greenText;
+  user-select: none;
+}
+
+.backWrapper {
+  margin-left: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: $greenText;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.backWrapper:hover {
+  transition: .5s;
+  font-size: 1.1rem;
+}
+
+.content {
+  flex: 1;
+
+}
+
+.tableWrapper {
+  margin: 4rem 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.romItem {
+  font-size: 1.2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  color: $greenText;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .5s;
+  width: 12rem;
+
+}
+
+.romItem:hover {
+  transition: .5s;
+  color: $blueText;
+  transform: scale(1.1);
+}
+
+
+.frameClass {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+

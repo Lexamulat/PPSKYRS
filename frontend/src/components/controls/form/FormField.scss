@@ -1,0 +1,115 @@
+@import '../../../styles/theme.scss';
+@import '../base';
+
+
+.fieldWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formField {
+  display: flex;
+  border-radius: 4px;
+  background-color: white;
+  height: 2.5rem;
+  width: $formFieldWidth;
+  @include formItemFont;
+  color: $formFieldGreyColor;
+
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0.5rem 0 0.5rem;
+  border-radius: 25px;
+  border: 1px solid $formFieldGreyColor;
+
+  &.withoutBorder {
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: auto;
+
+  }
+
+  &.withError {
+    border: 1px solid $formFieldErrorColor;
+
+  }
+}
+
+
+.columnWrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  flex: 1;
+}
+
+
+.label {
+  position: relative;
+  background-color: white;
+  flex: none;
+  bottom: 0.7rem;
+  display: inline-block;
+  width: fit-content;
+
+  font-size: 0.88rem;
+  font-family: $PtRoot;
+  opacity: 1;
+  color: $formFieldGreyColor;
+
+  &.error {
+    color: $formFieldErrorColor;
+  }
+}
+
+.labelPadding {
+  padding: 0.3rem;
+
+}
+
+
+.closable {
+  display: flex;
+}
+
+.redErrorWrapper {
+  flex: 2;
+  display: flex;
+  align-items: center;
+}
+
+.redError {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: 1rem;
+
+}
+
+.errorTextWrapper {
+  flex: 6;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.errorLabel {
+  width: 24rem;
+  display: flex;
+  color: red;
+}
+
+.icon {
+  width: 1.2rem;
+}
+
+.errorWrapper {
+  color: $formFieldErrorColor;
+  margin-left: 0.5rem;
+  width: $formFieldWidth;
+  font-family: $PtRoot;
+  font-size: 0.88rem;
+  height: 0.9rem;
+}

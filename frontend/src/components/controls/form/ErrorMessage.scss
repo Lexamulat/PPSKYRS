@@ -1,0 +1,29 @@
+@import '../base';
+@import '../../../styles/theme.scss';
+
+.errorMessage {
+  position: absolute;
+  min-height: 3rem;
+  min-width: 20rem;
+  top: 30rem;
+  color: $formFieldErrorColor;
+  font-family: $PtRoot;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem ;
+
+}
+
+.closeIcon{
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(assets/controls/close.svg) no-repeat center;
+  cursor: pointer;
+}
+
+.isClosedStyle{
+  display: none;
+}

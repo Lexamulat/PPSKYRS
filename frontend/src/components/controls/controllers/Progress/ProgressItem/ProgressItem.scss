@@ -1,0 +1,48 @@
+@import '../../../../../styles/theme.scss';
+
+.progressItemWrapper {
+  font-size: 1.2rem;
+  font-family: $PtRoot;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: $inactiveTextColor;
+}
+
+
+.circleAndTextLine {
+  display: flex;
+
+  .circle {
+    background: url(assets/controls/ellipse.svg) no-repeat center;
+    background-size: contain;
+    width: 1.5rem;
+  }
+
+  .activeCircle {
+    position: relative;
+    background: url(assets/controls/activeEllipse.svg) no-repeat center;
+    background-size: contain;
+    width: 2rem;
+    height: 2rem;
+    right: 0.25rem;
+  }
+
+  .text {
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .activeTextClass {
+    color: $activeTextColor;
+  }
+}
+
+.verticalConcatLine {
+  background: url(assets/controls/verticalLine.svg) no-repeat center;
+  background-size: contain;
+  width: 1.5rem;
+  height: 1rem;
+}
+

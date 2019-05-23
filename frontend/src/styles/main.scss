@@ -1,0 +1,55 @@
+@import 'theme';
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+@font-face {
+  font-family: 'PT-Root-UI';
+  src: url(/assets/fonts/PT_Root_UI_Regular/PT_Root_UI_Regular.ttf) format("opentype");
+  font-weight: normal;
+}
+
+
+@font-face {
+  font-family: 'PT-Root-UI';
+  src: url(/assets/fonts/PT_Root_UI_Medium/PT_Root_UI_Medium.ttf) format("opentype");
+  font-weight: 600;
+}
+
+
+@font-face {
+  font-family: 'PT-Root-UI';
+  src: url(/assets/fonts/PT_Root_UI_Bold/PT-Root-UI-Bold.ttf)  format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'PT-Root-UI';
+  src: url(/assets/fonts/PT_Root_UI_Regular/PT_Root_UI_Regular.ttf) format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'IBM';
+  src: url(/assets/fonts/IBM/IBM-italic/Ibmplexserifitalic.ttf) format("opentype");
+  font-style: italic;
+  font-weight: normal;
+}

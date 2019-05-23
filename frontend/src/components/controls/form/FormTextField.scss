@@ -1,0 +1,54 @@
+@import '../../../styles/theme.scss';
+
+.sup {
+  flex: 1;
+}
+
+.errSVG {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(assets/page/error.svg) no-repeat center;
+  position: relative;
+  bottom: 0;
+}
+
+.eyeSVG {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(assets/controls/inActiveEye.svg) no-repeat center;
+  position: relative;
+  bottom: .75rem;
+  cursor: pointer;
+}
+
+.witoutPaddingBottom {
+  bottom: 0;
+}
+
+.activeEye {
+  background: url(assets/controls/activeEye.svg) no-repeat center;
+}
+
+.fieldsWrapper {
+  display: flex;
+  justify-content: space-between;
+  min-height: $formFieldsHeight;
+}
+
+.withIcon {
+  width: 90%;
+}
+
+.withErrorAndLabel {
+  bottom: .8rem;
+}
+
+.passPrompt {
+  position: relative;
+  z-index: 2;
+  right: 7rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}

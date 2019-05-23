@@ -1,0 +1,13 @@
+@import "../../styles/theme.scss";
+@import "../../styles/mixins.scss";
+
+.pageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: $maxPageWidth;
+}
