@@ -22,9 +22,6 @@ export default {
     'tutuor-2-question': 'Training is conducted by the best teachers',
     'tutuor-3-question': 'Instant start <br> the schedule is determined <br> by the student',
 
-
-    'site-description': 'Online group lessons & marcetplace <br> platform',
-
     'become-a-tutor': 'Become a Tutor',
     'testimonials-press': 'Testimonials & press',
     'partner-programm': 'Partner programm',
@@ -84,7 +81,7 @@ export default {
     'signUp-token-err-2': 'Please, get a new password reset link',
     'here': 'here',
 
-    'go-to-tutor': 'Go to Tutor Recruitment',
+    'go-to-tutor': 'Go home',
 
     'fname-err': 'Please enter your first name',
     'lname-err': 'Please enter your last name',

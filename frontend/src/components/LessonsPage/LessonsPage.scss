@@ -1,0 +1,99 @@
+@import "../../styles/theme.scss";
+@import "../../styles/mixins.scss";
+.page {
+  background: $blueLinearBackground;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoLine {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .topLineButtonsBlock {
+    display: flex;
+  }
+
+  .logo {
+    cursor: pointer;
+    width: 15rem;
+    height: 1.5rem;
+    color: white;
+    font-weight: bold;
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    font-family: $PlexFamily;
+  }
+}
+
+.buttonClassProp {
+  background-color: #3c99de !important;
+}
+
+.signBtn {
+  height: 2rem;
+  width: 3.5rem;
+  margin-right: 2rem;
+}
+
+.pageContent {
+  flex: 1;
+  display: flex;
+}
+
+$filterWidth: 20rem;
+$lineWidth: 2px;
+
+.filterWrapper {
+  height: 100%;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  width: calc(#{$filterWidth} - #{$lineWidth});
+  display: flex;
+  .filterContent {
+    height: 100%;
+    width: calc(#{$filterWidth} - #{$lineWidth});
+    .filterTitleLine {
+      widows: 100%;
+      height: 3rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .filterTitleBlock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 10rem;
+        user-select: none;
+        border-bottom: 1px solid white;
+        .filterTitleText {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: white;
+        }
+      }
+    }
+  }
+  .filterBorderLine {
+    height: 100%;
+
+    width: $lineWidth;
+    min-width: $lineWidth;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .line {
+      height: 85%;
+      width: 100%;
+      border-right: 1px solid #eeecec;
+    }
+  }
+}

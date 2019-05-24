@@ -1,8 +1,8 @@
-import React, {Component as ReactComponent} from 'react';
-import {Route} from 'react-router';
+import React, { Component as ReactComponent } from 'react';
+import { Route } from 'react-router';
 import PropTypes from 'prop-types';
 
-import {TEACHER, STUDENT} from '../../sources/constants/userRoles'
+import { TEACHER, STUDENT } from '../../sources/constants/userRoles'
 
 import TeacherLoginPagesWrapperContainer from 'components/TeacherLoginPagesWrapper/TeacherLoginPagesWrapperContainer';
 
@@ -15,24 +15,33 @@ export default class RoleRoute extends ReactComponent {
     };
 
 
-    handleRender = ({Component}) => (props) => {
-        const {mode} = this.props;
+    handleRender = ({ Component }) => (props) => {
+        const { mode, signOnly, login } = this.props;
+        if (signOnly) {
+            if (login && login.role) {
+                return <Component {...props} />;
+
+            }
+            this.props.onNavigate('/login')
+            return <div></div>
+
+        }
         if (mode == TEACHER) {
             return (
                 <TeacherLoginPagesWrapperContainer>
-                    <Component {...props}/>
+                    <Component {...props} />
                 </TeacherLoginPagesWrapperContainer>
             )
         }
 
-        return <Component {...props}/>;
+        return <Component {...props} />;
     };
 
     render() {
-        const {component: Component, inline, ...restProps} = this.props;
+        const { component: Component, inline, ...restProps } = this.props;
         return (
 
-                    <Route render={this.handleRender({Component})} {...restProps}/>
+            <Route render={this.handleRender({ Component })} {...restProps} />
 
         );
         // return (

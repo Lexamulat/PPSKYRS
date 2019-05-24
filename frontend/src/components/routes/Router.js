@@ -18,6 +18,9 @@ import ForgotPasswordContainer from 'components/ForgotPassword/ForgotPasswordCon
 import ResetPasswordContainer from 'components/ResetPassword/ResetPasswordContainer';
 
 
+import LessonsPageContainer from 'components/LessonsPage/LessonsPageContainer';
+
+
 import { TEACHER, STUDENT } from '../../sources/constants/userRoles'
 
 export default class Router extends Component {
@@ -31,6 +34,7 @@ export default class Router extends Component {
                         exact
                         path='/'
                         component={TeacherLendingContainer}
+                        // component={LessonsPageContainer}
                     />
                     <RoleRoute
                         exact
@@ -70,13 +74,20 @@ export default class Router extends Component {
                         path='/forgot'
                         component={ForgotPasswordContainer}
                     />
-
                     <RoleRoute
                         inline
                         exact
                         mode={TEACHER}
                         path='/resetpass'
                         component={ResetPasswordContainer}
+                    />
+
+
+                    <RoleRoute
+                        signOnly
+                        exact
+                        path='/lessons'
+                        component={LessonsPageContainer}
                     />
                 </Switch>
             </ConnectedRouter>

@@ -21,7 +21,7 @@ export default class TeacherLoginPagesWrapper extends React.PureComponent {
             <div className={styles.wrapper}>
 
                 <div className={styles.logoWrapper}>
-                    <div className={styles.logo} onClick={this.handleGoTo(HOME_PATH)}></div>
+                    <div className={styles.logo} onClick={this.handleGoTo(HOME_PATH)}>StateExam</div>
                 </div>
                 {children}
                 <div className={styles.logoWrapper}>
