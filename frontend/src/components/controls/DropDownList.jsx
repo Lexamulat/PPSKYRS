@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import classnames from 'classnames';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DropDownList.scss';
 import classNames from 'classnames';
-import {Scrollbars} from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import onClickOutside from 'react-onclickoutside';
 
@@ -57,7 +57,7 @@ class DropDownList extends Component {
     }
 
     negotiateValue(props) {
-        const {canBeNotSelected, items, value} = props;
+        const { canBeNotSelected, items, value } = props;
         if (canBeNotSelected)
             return;
         if (items.length === 0)
@@ -70,7 +70,7 @@ class DropDownList extends Component {
 
     notifyChangeItem(item) {
         const nextValue = this.getNextValue(item);
-        this.props.onChange({'target': {'value': nextValue}});
+        this.props.onChange({ 'target': { 'value': nextValue } });
     }
 
     getNextValue(item) {
@@ -96,7 +96,7 @@ class DropDownList extends Component {
     }
 
     getSelectedItemSet() {
-        const {value} = this.props;
+        const { value } = this.props;
 
         if (!value)
             return new Set();
@@ -117,15 +117,17 @@ class DropDownList extends Component {
     }
 
     render() {
-        const {searchable, customClassName} = this.props;
-        const {opened} = this.state;
+        const { searchable, customClassName, value } = this.props;
+        const { opened } = this.state;
 
         const displaySearchField = searchable && opened;
-        const dropDownStyles = classnames(styles.dropDownList, customClassName);
+        const dropDownStyles = classnames(styles.dropDownList, customClassName, {
+            [styles.isActive]: value
+        });
 
         return (
             <div className={dropDownStyles}
-                 >
+            >
                 {displaySearchField ? this.renderSearchField() : this.renderHead()}
                 {opened && this.renderList()}
             </div>
@@ -133,8 +135,8 @@ class DropDownList extends Component {
     }
 
     renderSearchField() {
-        const {search} = this.state;
-        const {opened} = this.state;
+        const { search } = this.state;
+        const { opened } = this.state;
 
         const headClassName = classNames(styles.head, {
             [styles.opened]: opened,
@@ -147,14 +149,14 @@ class DropDownList extends Component {
                 value={search}
                 autoFocus={true}
                 ref='searchInput'
-                onChange={this.handleChangeFilter}/>
+                onChange={this.handleChangeFilter} />
 
         );
     }
 
 
     renderHead() {
-        const {disabled, value, error, headClass} = this.props;
+        const { disabled, value, error, headClass } = this.props;
         const enabled = !disabled;
         const headClassName = classNames(styles.head, headClass, {
             [styles.notChosen]: !value || value.length === 0,
@@ -163,7 +165,7 @@ class DropDownList extends Component {
 
         return (
             <div className={headClassName}
-                 onClick={enabled ? this.handleToggleDropDown : undefined}>
+                onClick={enabled ? this.handleToggleDropDown : undefined}>
                 {this.renderOption(value, 'head')}
             </div>
         );
@@ -183,7 +185,7 @@ class DropDownList extends Component {
     }
 
     getItems() {
-        const {items, canBeNotSelected} = this.props;
+        const { items, canBeNotSelected } = this.props;
 
         if (canBeNotSelected)
             return [null, ...items];
@@ -192,16 +194,16 @@ class DropDownList extends Component {
     }
 
     filterItem = item => {
-        const {formatter} = this.props;
-        const {search} = this.state;
+        const { formatter } = this.props;
+        const { search } = this.state;
 
         if (!Boolean(item)) return null
         return formatter(item, {}).toLowerCase()
             .startsWith(search.toLowerCase());
     };
 
-    handleChangeFilter = ({target: {value}}) => {
-        this.setState({search: value});
+    handleChangeFilter = ({ target: { value } }) => {
+        this.setState({ search: value });
     };
 
     handleToggleDropDown = () => {
@@ -216,46 +218,46 @@ class DropDownList extends Component {
         const selected = this.isItemSelected(item);
         const option = index !== 'head';
         const head = !option;
-        const {canBeNotSelected, listClass} = this.props;
+        const { canBeNotSelected, listClass } = this.props;
 
 
         const itemClassName = classNames(styles.listItem, listClass, {
             [styles.listItemSelected]: selected,
             [styles.placeholder]: canBeNotSelected && !item,
         });
-        const text = this.formatItem(item, {head});
+        const text = this.formatItem(item, { head });
 
         return (
             <div key={index}
-                 className={itemClassName}
-                 onClick={option ? this.handleChangeValue(item) : undefined}>
+                className={itemClassName}
+                onClick={option ? this.handleChangeValue(item) : undefined}>
                 {head ? text : this.formatText(item, text)}
             </div>
         );
     };
 
     formatText = (item, text) => {
-        const {textFormatter} = this.props;
+        const { textFormatter } = this.props;
         if (!textFormatter)
             return text;
         return textFormatter(item, text);
     };
 
     isItemSelected(item) {
-        const {value} = this.props;
+        const { value } = this.props;
         if (_.isArray(value))
             return value.includes(item);
 
         return value === item;
     }
 
-    formatItem(item, {head}) {
-        const {value, formatter, multipleFormatter} = this.props;
+    formatItem(item, { head }) {
+        const { value, formatter, multipleFormatter } = this.props;
 
         if (head && _.isArray(value))
             return multipleFormatter(value);
 
-        return formatter(item, {head})
+        return formatter(item, { head })
     }
 
     handleChangeValue = (item) => () => {

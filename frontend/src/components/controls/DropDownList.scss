@@ -1,5 +1,4 @@
-@import '../../styles/theme';
-
+@import "../../styles/theme";
 
 .dropDownList {
   border-radius: 4px;
@@ -22,7 +21,7 @@
   margin-left: -1rem;
 
   &.disabled {
-    opacity: .5;
+    opacity: 0.5;
     cursor: not-allowed;
 
     & * {
@@ -31,10 +30,12 @@
   }
 }
 
+.isActive {
+  margin-top: -2rem;
+}
+
 .head {
-
-
-  padding: 0.5em 1em;
+  padding: 0 1em;
   border-radius: 4px;
   outline: none;
 
@@ -48,7 +49,7 @@
   align-items: center;
 
   &:after {
-    content: '';
+    content: "";
 
     margin: 0 0.25em;
 
@@ -92,7 +93,6 @@
     &:hover {
       background: lightgray;
     }
-
   }
 
   .scroll {
@@ -109,7 +109,7 @@
 }
 
 .placeholder {
-  opacity: .7;
+  opacity: 0.7;
   font-size: 1.1rem;
 }
 

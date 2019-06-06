@@ -24,7 +24,7 @@ export default class FormDropDownList extends Component {
     };
 
     render() {
-        const {label, error, value, withBorder, withoutShadow, promptText,
+        const {label, error, value, withBorder, withoutShadow, promptText,labelClassName,
             className, placeholder, ...dropDownProps} = this.props;
 
         return (
@@ -33,6 +33,7 @@ export default class FormDropDownList extends Component {
                        withoutShadow={withoutShadow}
                        promptText={promptText}
                        className={className}
+                       labelClassName={labelClassName}
                        onClick={() => {
                            this.refs.dropdown.click();
                        }}>

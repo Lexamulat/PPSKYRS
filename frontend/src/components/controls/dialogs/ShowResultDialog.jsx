@@ -137,6 +137,7 @@ export default class ShowResultDialog extends Component {
                         placeholder={loc('lesson-type')}
                         value={lessonType}
                         className={styles.dropDownList}
+                        labelClassName={styles.labelClassName}
                         onChange={this.handleChangeOneOfDropDown.bind(this, 'lessonType')}
                     />
 
