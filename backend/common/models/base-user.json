@@ -108,6 +108,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "customLogOut"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getLessons"
     }
   ],
   "methods": {}

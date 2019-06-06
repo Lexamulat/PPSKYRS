@@ -1,0 +1,21 @@
+@import '../../../styles/theme';
+@import '../../../styles/mixins';
+.text {
+  color: black;
+  font-size: 2rem;
+}
+
+.header {
+  justify-content: center;
+  padding: 2rem 2rem 1rem 2rem;
+}
+
+.buttonsPanel {
+  margin-top: 1.6em;
+  display: flex;
+  justify-content: flex-start;
+  .button:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+

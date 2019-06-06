@@ -17,6 +17,9 @@ export const CHECK_RESET_PASS_TOKEN = 'auth/CHECK_RESET_PASS_TOKEN';
 export const SET_PASSWORD = 'auth/SET_PASSWORD';
 
 
+export const GET_LESSONS = 'auth/GET_LESSONS';
+
+
 export function getUserRole() {
     return {
         type: GET_USER_ROLE,
@@ -33,7 +36,7 @@ export function register(name, email, password) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/register',
-            data: {name, email, password}
+            data: { name, email, password }
         }
     };
 }
@@ -44,7 +47,7 @@ export function resendRegisterLink(email) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/resendRegisterLink',
-            data: {email}
+            data: { email }
         }
     };
 }
@@ -55,7 +58,7 @@ export function checkConfirmationToken(confirmationToken) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/checkConfirmationToken',
-            data: {confirmationToken}
+            data: { confirmationToken }
         }
     };
 }
@@ -66,7 +69,7 @@ export function login(email, password, rememberMe) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/customLogin',
-            data: {email, password, rememberMe}
+            data: { email, password, rememberMe }
         }
     };
 }
@@ -99,7 +102,7 @@ export function forgotPassword(email) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/forgotPassword',
-            data: {email}
+            data: { email }
         }
     };
 }
@@ -110,7 +113,7 @@ export function setPassword(confirmationToken, newPassword) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/resetPassword',
-            data: {confirmationToken, newPassword}
+            data: { confirmationToken, newPassword }
         }
     };
 }
@@ -121,7 +124,29 @@ export function checkResetPasswordToken(confirmationToken) {
         httpRequest: {
             method: 'post',
             path: '/baseUser/checkResetPassToken',
-            data: {confirmationToken}
+            data: { confirmationToken }
+        }
+    };
+}
+
+
+export function getLessons() {
+    return {
+        type: GET_LESSONS,
+        httpRequest: {
+            method: 'get',
+            path: '/lesson/getLessons',
+        }
+    };
+}
+
+export function createLesson(name, lessonType, year, location, description) {
+    return {
+        type: GET_LESSONS,
+        httpRequest: {
+            method: 'post',
+            path: '/lesson/createLesson',
+            data: { name, lessonType, year, location, description }
         }
     };
 }

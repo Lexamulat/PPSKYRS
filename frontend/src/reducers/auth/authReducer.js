@@ -1,6 +1,6 @@
 import dotProp from 'dot-prop-immutable';
 import parseActionSubype from '../parseActionSubtype';
-import {success, fail} from 'reducers/extendActionType';
+import { success, fail } from 'reducers/extendActionType';
 
 import createReducerByMap from '../createReducerByMap';
 import {
@@ -14,9 +14,10 @@ import {
     FORGOT_PASSWORD,
     CHECK_RESET_PASS_TOKEN,
     SET_PASSWORD,
+    GET_LESSONS
 } from './authActions';
 
-import {requestHandler} from '../RequestReducerHelper';
+import { requestHandler } from '../RequestReducerHelper';
 import * as extendActionType from '../extendActionType';
 
 const initialState = {
@@ -34,6 +35,7 @@ const reducerMap = {
     [FORGOT_PASSWORD]: requestHandler('forgotPassword'),
     [CHECK_RESET_PASS_TOKEN]: requestHandler('checkResetPassToken'),
     [SET_PASSWORD]: setPassword,
+    [GET_LESSONS]: requestHandler('getLessons'),
 };
 
 export default createReducerByMap(initialState, reducerMap);
@@ -70,7 +72,7 @@ function userLogout(state, action) {
 }
 
 function setUserRole(state, action) {
-    const nextState = requestHandler('userRole', {resultKey: 'login'}).exec(state, action);
+    const nextState = requestHandler('userRole', { resultKey: 'login' }).exec(state, action);
     if (action.type === GET_USER_ROLE)
         return nextState;
 

@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
-import {push} from 'connected-react-router';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
 
-import {logout} from '../../reducers/auth/authActions';
+import { logout, getLessons, createLesson } from '../../reducers/auth/authActions';
 
 
 import LessonsPage from './LessonsPage';
@@ -17,7 +17,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     onLogout: logout,
-    onNavigate: push
+    onNavigate: push,
+    onGetLessons: getLessons,
+    onCreateLesson: createLesson
 };
 
 export default connect(

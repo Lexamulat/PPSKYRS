@@ -1,0 +1,132 @@
+@import '../../../styles/theme';
+@import '../../../styles/mixins';
+.bottomBlock {
+    display: block;
+    position: relative;
+    height: 80%;
+    border-top: 1px solid white;
+    margin-right: 10%;
+}
+
+.codeBlock {
+    display: block;
+    margin-left: 10px;
+    position: relative;
+    height: 100%;
+    width: 98%;
+    z-index: 20001;
+}
+
+.mainInfoBlock {
+    margin-left: 20px;
+    width: 20%;
+    height: 35rem;
+    border-right: 1px solid white;
+    // color: #9cbfe2;
+}
+
+.dialogWrapper {
+    display: flex;
+}
+
+.mainContentBlock {
+    width: 100%;
+    height: 35rem;
+    // color: #9cbfe2;
+}
+
+.topBlock {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.descriptionTextBlock {
+    padding-top: 40px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.titleBlock {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    margin-right: 15px;
+    font-size: 0.7rem;
+}
+
+.textBlockBottom {
+    padding-top: 30px;
+    font-size: 1rem;
+    display: flex;
+    flex-flow: column wrap;
+    border-bottom: 1px solid white;
+}
+
+.text {
+    color: black;
+    font-size: 2rem;
+    line-height: 1.71;
+}
+
+.header {
+    justify-content: center;
+}
+
+.buttonsPanel {
+    margin-top: 0.6em;
+    display: flex;
+    font-size: 2rem;
+    color: blue;
+    cursor: pointer;
+}
+
+.cellHeader {
+    padding: 0.75rem;
+    text-align: left;
+    color: white;
+    //opacity: 0.3;
+}
+
+.table {
+    width: 80rem;
+    height: 35rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+    background: rgba(34, 34, 35, 0.4);
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+@media screen and (max-width: 1200px) {
+    .table {
+        width: 50rem !important;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .table {
+        width: 40rem !important;
+    }
+}
+
+.cell {
+    padding: 0.75rem;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #b5c7d8;
+}
+
+.tableRow {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+td {
+    min-height: 2.5rem;
+    height: 2.5rem;
+}

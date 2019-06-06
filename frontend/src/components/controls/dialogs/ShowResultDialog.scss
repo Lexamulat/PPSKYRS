@@ -1,0 +1,87 @@
+.text {
+  color: black;
+  font-size: 2rem;
+  line-height: 1.71;
+}
+
+.header {
+  justify-content: center;
+  padding: 2rem 0 0 0;
+}
+
+.buttonsPanel {
+  margin-top: 0.6em;
+  display: flex;
+  font-size: 2rem;
+  color: blue;
+  cursor: pointer;
+}
+
+.cellHeader {
+  padding: 0.75rem;
+  text-align: left;
+  color: white;
+  //opacity: 0.3;
+}
+
+.table {
+  // width: 100%;
+  width: 70rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  background: rgba(34, 34, 35, 0.4);
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+
+@media screen and (max-width: 1200px) {
+  .table {
+    width: 50rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .table {
+    width: 40rem;
+  }
+}
+
+.cell {
+  padding: 0.75rem;
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #b5c7d8;
+}
+
+.tableRow {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+td {
+  min-height: 2.5rem;
+  height: 2.5rem;
+}
+
+.text {
+  width: 40rem;
+  height: 35rem;
+}
+
+.areaClassName {
+  height: 5rem;
+}
+.descriptionClassName {
+  height: 10rem;
+}
+
+.create {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+.createBtn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #37b198;
+}

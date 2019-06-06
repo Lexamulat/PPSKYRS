@@ -1,0 +1,107 @@
+@import "../../../styles/theme.scss";
+@import "../../../styles/mixins.scss";
+.itemWrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  border-bottom: 1px solid grey;
+  margin-left: 15px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.imgPart {
+  height: 100%;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .math {
+    background: url(assets/page/math.jpg) no-repeat center/contain;
+    width: 5rem;
+    height: 12rem;
+  }
+
+  .rus {
+    background: url(assets/page/rus.jpg) no-repeat center/contain;
+    width: 5rem;
+    height: 12rem;
+  }
+}
+
+.textPart {
+  height: 100%;
+  width: 32rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.controlsPart {
+  box-sizing: border-box;
+  height: 100%;
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.nameLine {
+  width: 100%;
+  height: 2rem;
+  font-size: 1.5rem;
+  color: #202020;
+  font-weight: bold;
+}
+
+.yearSity {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.year {
+  width: 20%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+}
+.sity {
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.description {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.description::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+.btnWrapper {
+  width: 4rem;
+  height: 1.3rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+}
+
+.edit {
+  background-color: rgb(243, 190, 113);
+}
+.delete {
+  background-color: $blueText;
+}

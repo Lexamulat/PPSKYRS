@@ -16,7 +16,7 @@ export default {
     'view-lessons': 'Go to lessons page',
 
     'mange-you-classes': 'Manage your classes and requests',
-   
+
 
     'tutuor-1-question': 'Сlasses are held in small groups <br> two or three students',
     'tutuor-2-question': 'Training is conducted by the best teachers',
@@ -101,6 +101,13 @@ export default {
 
     'enter-new-pass': 'Please enter new password',
     'credentials-mismatch': 'Incorrect email or password',
+
+    'year': 'year',
+    'lessonType': 'type',
+    'lesson-type': 'lesson-type',
+    'name': 'name',
+    'location': 'Your location',
+    'description': 'Description'
 
 
 };

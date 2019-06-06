@@ -45,5 +45,9 @@
   "RoleMapping": {
     "dataSource": "mysql",
     "public": false
+  },
+  "Lesson": {
+    "dataSource": "mysql",
+    "public": true
   }
 }

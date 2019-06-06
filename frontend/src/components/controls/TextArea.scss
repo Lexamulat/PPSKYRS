@@ -1,0 +1,28 @@
+
+.field {
+  flex: none;
+  font-size: 0.9em;
+  resize: none;
+  width: 100%;
+
+//   @include formItemFont;
+  padding: 0.5em;
+
+  border-radius: 4px;
+  border: none;
+  outline: none;
+
+  &.highlightError {
+    border-color: red;
+    background-color: rgba(red, 0.14);
+    color: red;
+  }
+
+  &::placeholder {
+    opacity: .4;
+  }
+
+  &.highlightError::placeholder {
+    color: red;
+  }
+}

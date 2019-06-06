@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import className from 'classnames';
 
 import {
-    Button
+    Button, ShowResultDialog
 } from 'components/controls';
 
 
+import LessonItem from './LessonItem/LessonItem';
 
 import styles from './LessonsPage.scss';
 
@@ -24,22 +26,39 @@ export default class LessonsPage extends React.Component {
         // checkResetPassTokenError: PropTypes.object,
         // checkResetPassTokenProcessing: PropTypes.bool,
 
-        // onLogout: PropTypes.func.isRequired,
+        onGetLessons: PropTypes.func.isRequired,
 
-        // login: PropTypes.object,
-        // loginError: PropTypes.object,
-        // loginProcessing: PropTypes.bool,
+        getLessons: PropTypes.object,
+        getLessonsError: PropTypes.object,
+        getLessonsProcessing: PropTypes.bool,
 
+
+        onCreateLesson: PropTypes.func.isRequired,
 
     };
 
     constructor(props) {
         super(props);
         this.state = {
-
+            lessons: [],
+            isCreateDialogVisible: false
         };
     }
 
+
+    componentWillMount() {
+        this.props.onGetLessons();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!this.props.getLessons && nextProps.getLessons) {
+            this.writeInfoToState(nextProps.getLessons)
+        }
+    }
+
+    writeInfoToState(lessons) {
+        this.setState({ lessons })
+    }
 
     signAction = (isLogged) => () => {
 
@@ -60,14 +79,65 @@ export default class LessonsPage extends React.Component {
                 />
             </div>
         )
+    }
 
+    renderPoints = () => {
+        const mas = [];
+        for (let i = 0; i < 50; i++) {
+            mas.push(i);
+        }
+
+        const { lessons } = this.state;
+        console.log("TCL: LessonsPage -> renderPoints -> lessons", lessons)
+
+        return (
+            <Fragment>
+                {mas.map((el, i) => {
+                    return (
+                        <LessonItem
+                            key={i}
+                            type='rus'
+                        />
+
+                    )
+                })}
+            </Fragment>
+
+        )
+    }
+
+    toggleCreateLessonDialog = () => {
+        const { isCreateDialogVisible } = this.state;
+        this.setState({ isCreateDialogVisible: !isCreateDialogVisible })
+    }
+
+    sendCreateLesson = () => {
+        console.log('send')
+    }
+
+    renderCreateReportDialog = () => {
+        const { isCreateDialogVisible } = this.state;
+        if (!isCreateDialogVisible) return;
+
+
+        console.log('2')
+
+        return (
+            <ShowResultDialog
+                title={'Create lesson'}
+                onClose={this.toggleCreateLessonDialog}
+                onAction={this.toggleCreateLessonDialog}
+            />
+        )
     }
 
     render() {
 
+        const createClass = className(styles.btnWrapper, styles.create)
 
         return (
             <div className={styles.page}>
+                {this.renderCreateReportDialog()}
                 <div className={styles.logoLine}>
                     <div className={styles.logo} onClick={() => { this.props.onNavigate('/') }}>StateExam</div>
                     <div className={styles.topLineButtonsBlock}>
@@ -75,30 +145,15 @@ export default class LessonsPage extends React.Component {
                     </div>
                 </div>
                 <section className={styles.pageContent}>
-                    <section className={styles.filterWrapper}>
-                        <div className={styles.filterContent}>
-                            <div className={styles.filterTitleLine}>
-                                <div className={styles.filterTitleBlock}>
-                                    <span className={styles.filterTitleText}>Filter</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className={styles.filterBorderLine}>
-                            <div className={styles.line}>
-                            </div>
-                        </div>
+                    <section className={styles.contentColumn}>
+                        {this.renderPoints()}
                     </section>
-
-
-
-                    <div>
-                    </div>
-
+                    <div
+                        className={createClass}
+                        onClick={this.toggleCreateLessonDialog}
+                    >Create</div>
                 </section>
             </div>
         )
     }
 }
-
-

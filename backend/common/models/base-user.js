@@ -10,142 +10,152 @@ const addAuthCookie = require('../../helpers/addAuthCookie');
 const delAuthCookie = require('../../helpers/delAuthCookie');
 
 const uuidv4 = require('uuid/v4');
-const {TEACHER, STUDENT} = require('../../server/datasources/constants/userRoles');
+const { TEACHER, STUDENT } = require('../../server/datasources/constants/userRoles');
 
 
 module.exports = function (BaseUser) {
 
   BaseUser.remoteMethod('getUserRole', {
-    http: {path: '/getUserRole', verb: 'get'},
+    http: { path: '/getUserRole', verb: 'get' },
     accepts: [
-      {arg: 'options', type: 'object', http: 'optionsFromRequest'}
+      { arg: 'options', type: 'object', http: 'optionsFromRequest' }
     ],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.getUserRole = getUserRole;
 
   BaseUser.remoteMethod('register', {
-    http: {path: '/register', verb: 'post'},
+    http: { path: '/register', verb: 'post' },
     accepts: [
-      {arg: 'name', type: 'string', required: true},
-      {arg: 'email', type: 'string', required: true},
-      {arg: 'password', type: 'string', required: true},
+      { arg: 'name', type: 'string', required: true },
+      { arg: 'email', type: 'string', required: true },
+      { arg: 'password', type: 'string', required: true },
     ],
 
     returns: [
-      {arg: 'response', type: 'any'},
+      { arg: 'response', type: 'any' },
     ],
   });
   BaseUser.register = register;
 
   BaseUser.remoteMethod('resendRegisterLink', {
-    http: {path: '/resendRegisterLink', verb: 'post'},
+    http: { path: '/resendRegisterLink', verb: 'post' },
     accepts: [
-      {arg: 'email', type: 'string', required: true},
+      { arg: 'email', type: 'string', required: true },
     ],
     returns: [
-      {arg: 'response', type: 'any'},
+      { arg: 'response', type: 'any' },
     ],
   });
   BaseUser.resendRegisterLink = resendRegisterLink;
 
   BaseUser.remoteMethod('forgotPassword', {
-    http: {path: '/forgotPassword', verb: 'post'},
+    http: { path: '/forgotPassword', verb: 'post' },
     accepts: [
-      {arg: 'email', type: 'string', required: true},
+      { arg: 'email', type: 'string', required: true },
     ],
     returns: [
-      {arg: 'response', type: 'any'},
+      { arg: 'response', type: 'any' },
     ],
   });
   BaseUser.forgotPassword = forgotPassword;
 
 
   BaseUser.remoteMethod('checkConfirmationToken', {
-    http: {path: '/checkConfirmationToken', verb: 'post'},
+    http: { path: '/checkConfirmationToken', verb: 'post' },
     accepts: [
-      {arg: 'res', type: 'object', http: {source: 'res'}},
-      {arg: 'confirmationToken', type: 'string', required: true},
+      { arg: 'res', type: 'object', http: { source: 'res' } },
+      { arg: 'confirmationToken', type: 'string', required: true },
     ],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.checkConfirmationToken = checkConfirmationToken;
 
 
   BaseUser.remoteMethod('resetPassword', {
-    http: {path: '/resetPassword', verb: 'post'},
+    http: { path: '/resetPassword', verb: 'post' },
     accepts: [
-      {arg: 'res', type: 'object', http: {source: 'res'}},
-      {arg: 'confirmationToken', type: 'string', required: true},
-      {arg: 'newPassword', type: 'string', required: true},
+      { arg: 'res', type: 'object', http: { source: 'res' } },
+      { arg: 'confirmationToken', type: 'string', required: true },
+      { arg: 'newPassword', type: 'string', required: true },
     ],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.resetPassword = resetPassword;
 
 
   BaseUser.remoteMethod('checkResetPassToken', {
-    http: {path: '/checkResetPassToken', verb: 'post'},
+    http: { path: '/checkResetPassToken', verb: 'post' },
     accepts: [
-      {arg: 'confirmationToken', type: 'string', required: true},
+      { arg: 'confirmationToken', type: 'string', required: true },
     ],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.checkResetPassToken = checkResetPassToken;
 
 
   BaseUser.remoteMethod('customLogin', {
-    http: {path: '/customLogin', verb: 'post'},
+    http: { path: '/customLogin', verb: 'post' },
     accepts: [
-      {arg: 'res', type: 'object', http: {source: 'res'}},
-      {arg: 'email', type: 'string', required: true},
-      {arg: 'password', type: 'string', required: true},
-      {arg: 'rememberMe', type: 'boolean', required: true},
+      { arg: 'res', type: 'object', http: { source: 'res' } },
+      { arg: 'email', type: 'string', required: true },
+      { arg: 'password', type: 'string', required: true },
+      { arg: 'rememberMe', type: 'boolean', required: true },
     ],
     returns: [
-      {arg: 'response', type: 'any'},
+      { arg: 'response', type: 'any' },
     ],
   });
   BaseUser.customLogin = customLogin;
 
   BaseUser.remoteMethod('customLogOut', {
-    http: {path: '/customLogOut', verb: 'post'},
+    http: { path: '/customLogOut', verb: 'post' },
     accepts: [
-      {arg: 'req', type: 'object', http: {source: 'req'}},
-      {arg: 'res', type: 'object', http: {source: 'res'}},
+      { arg: 'req', type: 'object', http: { source: 'req' } },
+      { arg: 'res', type: 'object', http: { source: 'res' } },
     ],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.customLogOut = customLogOut;
 
 
   BaseUser.remoteMethod('test', {
-    http: {path: '/test', verb: 'post'},
+    http: { path: '/test', verb: 'post' },
     accepts: [],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.test = test;
 
   BaseUser.remoteMethod('getPing', {
-    http: {path: '/getPing', verb: 'get'},
+    http: { path: '/getPing', verb: 'get' },
     accepts: [],
     returns: [
-      {arg: 'response', type: 'any', 'root': true},
+      { arg: 'response', type: 'any', 'root': true },
     ],
   });
   BaseUser.getPing = getPing;
+
+
+  BaseUser.remoteMethod('getLessons', {
+    http: { path: '/getLessons', verb: 'get' },
+    accepts: [],
+    returns: [
+      { arg: 'response', type: 'any', 'root': true },
+    ],
+  });
+  BaseUser.getLessons = getLessons;
 };
 
 
@@ -164,11 +174,11 @@ async function getUserRole(options) {
 }
 
 async function test() {
-  return {responceData: 'pong'}
+  return { responceData: 'pong' }
 }
 
 async function getPing() {
-  return {responceData: 'pong'}
+  return { responceData: 'pong' }
 }
 
 
@@ -183,7 +193,7 @@ async function customLogin(res, email, password, rememberMe) {
 
   const baseUser = await app.models.BaseUser.findById(accessToken.userId)
 
-  addAuthCookie(res, accessToken, {rememberMe});
+  addAuthCookie(res, accessToken, { rememberMe });
 
   return {
     result: {
@@ -210,7 +220,7 @@ async function register(name, email, password) {
     throw CustomError.information('email-is-already-exist');
   }
 
-//take care of emailVerified field this val must be=1 for success login
+  //take care of emailVerified field this val must be=1 for success login
   const userInstance = await app.models.BaseUser.create([{
     role: TEACHER,
     name,
@@ -249,7 +259,7 @@ async function checkConfirmationToken(res, confirmationToken) {
     throw CustomError.information('cannot-create-access-token');
   }
 
-  addAuthCookie(res, accessToken, {rememberMe: true});
+  addAuthCookie(res, accessToken, { rememberMe: true });
 
 
   return {
@@ -261,7 +271,7 @@ async function checkConfirmationToken(res, confirmationToken) {
 
 
 async function checkResetPassToken(confirmationToken) {
-  const userInstance = await app.models.BaseUser.findOne({where: {verificationToken: confirmationToken}});
+  const userInstance = await app.models.BaseUser.findOne({ where: { verificationToken: confirmationToken } });
   if (!userInstance) {
     throw CustomError.information('incorrect-token');
   }
@@ -269,12 +279,12 @@ async function checkResetPassToken(confirmationToken) {
 
 async function resetPassword(res, confirmationToken, newPassword) {
 
-  const userInstance = await app.models.BaseUser.findOne({where: {verificationToken: confirmationToken}});
+  const userInstance = await app.models.BaseUser.findOne({ where: { verificationToken: confirmationToken } });
   if (!userInstance) {
     throw CustomError.information('incorrect-token');
   }
 
-  await userInstance.updateAttributes({password: newPassword, verificationToken: null});
+  await userInstance.updateAttributes({ password: newPassword, verificationToken: null });
 
   const loginRes = await customLogin(res, userInstance.email, newPassword)
 
@@ -286,8 +296,8 @@ async function resetPassword(res, confirmationToken, newPassword) {
 async function resendRegisterLink(email) {
 
   const userInstanceToken = await app.models.BaseUser.findOne({
-    where: {email},
-    fields: {verificationToken: true}
+    where: { email },
+    fields: { verificationToken: true }
   });
   if (!userInstanceToken) {
     throw CustomError.information('no-user-with-suchEmail');
@@ -305,7 +315,7 @@ async function resendRegisterLink(email) {
 async function forgotPassword(email) {
 
   const userInstance = await app.models.BaseUser.findOne({
-    where: {email},
+    where: { email },
   });
   if (!userInstance) {
     throw CustomError.information('no-user-with-suchEmail');
@@ -326,7 +336,7 @@ async function forgotPassword(email) {
 }
 
 async function isEmailExist(email) {
-  const numOfUsersWithSuchEmail = await app.models.BaseUser.count({email});
+  const numOfUsersWithSuchEmail = await app.models.BaseUser.count({ email });
   return Boolean(numOfUsersWithSuchEmail);
 }
 
@@ -336,10 +346,16 @@ async function checkVerifToken(verificationToken) {
     verificationToken
   }
 
-  const user = await app.models.BaseUser.findOne({where});
+  const user = await app.models.BaseUser.findOne({ where });
   if (!user) {
     throw CustomError.information('incorrect-token');
   }
   return user
 
+}
+
+
+async function getLessons() {
+  console.log('get lessons')
+  return 'wow'
 }
