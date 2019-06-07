@@ -14,29 +14,6 @@ const { TEACHER, STUDENT } = require('../../server/datasources/constants/userRol
 
 
 
-
-
-"name": {
-    "type": "string"
-},
-"lessonType": {
-    "type": "string"
-},
-"year": {
-    "type": "string"
-},
-"location": {
-    "type": "string"
-},
-"description": {
-    "type": "string"
-},
-"userId": {
-    "type": "number"
-}
-
-
-
 module.exports = function (Lesson) {
 
     Lesson.remoteMethod('getLessons', {

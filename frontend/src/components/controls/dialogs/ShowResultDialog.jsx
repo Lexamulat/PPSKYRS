@@ -156,6 +156,8 @@ export default class ShowResultDialog extends Component {
                         placeholder={loc('location')}
                         withShadow={false}
                         className={styles.areaClassName}
+                        labelClassName={styles.labelClassName}
+
                         value={location}
                         initialHeight={50}
                     />
@@ -166,6 +168,8 @@ export default class ShowResultDialog extends Component {
                         placeholder={loc('description')}
                         withShadow={false}
                         className={styles.descriptionClassName}
+                        labelClassName={styles.labelClassName}
+
                         value={description}
                         initialHeight={150}
                     />

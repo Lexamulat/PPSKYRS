@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FormField from './FormField';
 import TextArea from '../TextArea';
@@ -18,6 +18,7 @@ export default class FormTextArea extends Component {
             error,
             className,
             value,
+            labelClassName,
             ...restProps,
 
         } = this.props;
@@ -26,11 +27,12 @@ export default class FormTextArea extends Component {
             <FormField
                 error={error}
                 className={className}
+                labelClassName={labelClassName}
                 label={Boolean(value) ? label : ''}
             >
                 <TextArea
                     value={value}
-                    {...restProps} error={error}/>
+                    {...restProps} error={error} />
             </FormField>
         );
     }

@@ -16,9 +16,10 @@
   color: grey;
   font-size: 0.9em;
 
-  width: calc(100% + 2rem);
+  // width: 100%;
+  width: calc(100%);
   background: white;
-  margin-left: -1rem;
+  // margin-left: -1rem;
 
   &.disabled {
     opacity: 0.5;
@@ -35,7 +36,7 @@
 }
 
 .head {
-  padding: 0 1em;
+  // padding: 0 1em;
   border-radius: 4px;
   outline: none;
 
@@ -55,13 +56,13 @@
 
     width: 1em;
     min-height: 1em;
-    // background: url('assets/controls/dropdown.svg') no-repeat center;
+    background: url("assets/controls/dropdown.svg") no-repeat center;
     background-size: 90%;
   }
 
   &.notChosen {
-    padding-left: 1rem;
-    font-size: 1.2rem;
+    // padding-left: 1rem;
+    // font-size: 1.2rem;
   }
 
   &.highlightError {
