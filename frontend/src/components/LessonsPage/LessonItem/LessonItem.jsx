@@ -2,6 +2,10 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import className from 'classnames';
 
+import {
+    Form,
+    FormTextField, ConfirmDialog, FormTextArea, LanguageDropDownList
+} from 'components/controls';
 
 
 import styles from './LessonItem.scss'
@@ -23,6 +27,7 @@ export default class LessonItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            showDeletePopUp: false
 
         };
     }
@@ -39,10 +44,17 @@ export default class LessonItem extends React.Component {
         }
     }
 
-    renderEditBtns() {
+    handleDelete = () => {
+
+    }
+
+    renderEditBtns(showEditBtns) {
+
+        if (!showEditBtns) return
 
         const editClass = className(styles.btnWrapper, styles.edit)
         const deleteClass = className(styles.btnWrapper, styles.delete)
+
 
         return (
             <div className={styles.controlsPart}>
@@ -51,7 +63,10 @@ export default class LessonItem extends React.Component {
                     <span>EDIT</span>
                 </div>
 
-                <div className={deleteClass} >
+                <div
+                    className={deleteClass}
+                    onClick={this.handleDelete}
+                >
                     <span>DELETE</span>
                 </div>
 
@@ -63,7 +78,7 @@ export default class LessonItem extends React.Component {
 
     render() {
 
-        const { name, lessonType, year, location, description } = this.props
+        const { name, lessonType, year, location, description, showEditBtns } = this.props
         return (
             <div
                 className={styles.itemWrapper}
@@ -81,7 +96,7 @@ export default class LessonItem extends React.Component {
                         {description}
                     </div>
                 </div>
-                {this.renderEditBtns()}
+                {this.renderEditBtns(showEditBtns)}
             </div>
         )
     }

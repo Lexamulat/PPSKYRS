@@ -19,6 +19,7 @@ export Progress from './controllers/Progress/Progress';
 
 export ShowResultDialog from './dialogs/ShowResultDialog';
 export DashboardDialogForm from './dialogs/DashboardDialogForm';
+export ConfirmDialog from './dialogs/ConfirmDialog';
 
 
 export LangModDropDownList from './LangModDropDownList';

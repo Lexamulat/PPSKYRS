@@ -1,5 +1,11 @@
-@import '../../../styles/theme';
-@import '../../../styles/mixins';
+@import "../../../styles/theme";
+@import "../../../styles/mixins";
+
+.btnWrap {
+  width: 5rem;
+  height: 1.5rem;
+}
+
 .text {
   color: black;
   font-size: 2rem;
@@ -7,7 +13,21 @@
 
 .header {
   justify-content: center;
-  padding: 2rem 2rem 1rem 2rem;
+  // padding: 2rem 2rem 1rem 2rem;
+}
+
+.buttonOk {
+  color: green;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buttonCancel {
+  color: red;
+  font-size: 1.2rem;
+  cursor: pointer;
+
 }
 
 .buttonsPanel {
@@ -18,4 +38,3 @@
     margin-right: 1rem;
   }
 }
-

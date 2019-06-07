@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 
-import { DashboardDialogForm } from 'components/controls';
+import { Button, DashboardDialogForm } from 'components/controls';
 
 
 import styles from './ConfirmDialog.scss';
@@ -64,17 +64,27 @@ export default class ConfirmDialog extends Component {
                 </div>
 
                 <div className={styles.buttonsPanel}>
-                    {!withoutOkButton && < button label={okLabel}
-                        type={okButtonType}
-                        className={styles.button}
-                        color={COLORS.BLUE}
-                        onClick={this.handleOK} />
+                    {!withoutOkButton &&
+                        <div className={styles.btnWrap}>
+                            < Button label={okLabel}
+                                type={okButtonType}
+                                text={'OK'}
+                                buttonClassProp={styles.buttonOk}
+                                color={'blue'}
+                                onClick={this.handleOK} />
+                        </div>
+
                     }
-                    {!withoutCancelButton && <button label={cancelLabel}
-                        type='cancel'
-                        color={COLORS.GREY}
-                        className={styles.button}
-                        onClick={this.handleCancel} />
+                    {!withoutCancelButton &&
+                        <div className={styles.btnWrap}>
+                            <Button label={cancelLabel}
+                                type='cancel'
+                                color={'grey'}
+                                text={'Cancel'}
+                                buttonClassProp={styles.buttonCancel}
+                                onClick={this.handleCancel} />
+                        </div>
+
                     }
                 </div>
             </DashboardDialogForm>

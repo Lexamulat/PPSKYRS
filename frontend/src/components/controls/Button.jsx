@@ -18,19 +18,20 @@ export default class Button extends React.PureComponent {
 
     render() {
 
-        const {type, onClick, text, buttonClassProp} = this.props;
+        const { type, onClick, text, buttonClassProp } = this.props;
+        console.log("TCL: Button -> render -> text", text)
 
 
 
         const buttonClass = classNames(styles.buttonWrapper, buttonClassProp)
 
         return (
-            <button type={type}
+                <button type={type}
                     onClick={onClick}
                     className={buttonClass}
-            >
-                {text}
-            </button>
+                >
+                    {text}
+                </button>
         );
 
     }

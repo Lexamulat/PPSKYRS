@@ -18,6 +18,8 @@ export const SET_PASSWORD = 'auth/SET_PASSWORD';
 
 
 export const GET_LESSONS = 'auth/GET_LESSONS';
+export const CREATE_LESSON = 'auth/CREATE_LESSON';
+
 
 
 export function getUserRole() {
@@ -142,7 +144,7 @@ export function getLessons() {
 
 export function createLesson(name, lessonType, year, location, description) {
     return {
-        type: GET_LESSONS,
+        type: CREATE_LESSON,
         httpRequest: {
             method: 'post',
             path: '/lesson/createLesson',

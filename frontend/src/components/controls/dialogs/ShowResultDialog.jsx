@@ -6,8 +6,8 @@ import classNames from 'classnames';
 import { DashboardDialogForm } from 'components/controls';
 
 import {
-    Button, Form, FormCheckbox,
-    FormTextField, FormFieldWrapper, ErrorMessage, FormTextArea, LanguageDropDownList
+    Form,
+    FormTextField, ConfirmDialog, FormTextArea, LanguageDropDownList
 } from 'components/controls';
 
 
@@ -37,7 +37,8 @@ export default class ShowResultDialog extends Component {
             year: '',
             location: '',
             description: '',
-            isErrorShown: false
+            isErrorShown: false,
+            isConfirmDialogVisible: false
         };
     }
 
@@ -74,7 +75,8 @@ export default class ShowResultDialog extends Component {
         if (this.isNeedToShowError(name, lessonType, year, location, description)) {
             this.setState({ isErrorShown: true })
         } else {
-            this.props.submitAction(name, lessonType, year, location, description)
+            this.props.submitAction(name, lessonType, year, location, description);
+            this.toggleConfirmDialog();
         }
     }
 
@@ -87,6 +89,33 @@ export default class ShowResultDialog extends Component {
             }
         });
         return boolVal
+    }
+
+    toggleConfirmDialog = () => {
+        const { isConfirmDialogVisible } = this.state;
+        this.setState({ isConfirmDialogVisible: !isConfirmDialogVisible })
+    }
+
+    okConfirmDialog = () => {
+        this.toggleConfirmDialog();
+        this.props.toggleCreateAction();
+    }
+
+    renderConfirmDialog = () => {
+
+        const { isConfirmDialogVisible } = this.state;
+        if (!isConfirmDialogVisible) return
+
+        return (
+            <ConfirmDialog
+                withoutCancelButton
+                text={'Added succesfully'}
+                onCancel={this.toggleConfirmDialog}
+                onClose={this.toggleConfirmDialog}
+                onOk={this.okConfirmDialog}
+
+            />
+        )
     }
 
     render() {
@@ -194,6 +223,8 @@ export default class ShowResultDialog extends Component {
 
 
                 </Form>
+
+                {this.renderConfirmDialog()}
             </DashboardDialogForm >
         );
     }

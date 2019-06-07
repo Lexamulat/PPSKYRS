@@ -14,7 +14,8 @@ import {
     FORGOT_PASSWORD,
     CHECK_RESET_PASS_TOKEN,
     SET_PASSWORD,
-    GET_LESSONS
+    GET_LESSONS,
+    CREATE_LESSON
 } from './authActions';
 
 import { requestHandler } from '../RequestReducerHelper';
@@ -36,6 +37,7 @@ const reducerMap = {
     [CHECK_RESET_PASS_TOKEN]: requestHandler('checkResetPassToken'),
     [SET_PASSWORD]: setPassword,
     [GET_LESSONS]: requestHandler('getLessons'),
+    [CREATE_LESSON]: requestHandler('createLesson'),
 };
 
 export default createReducerByMap(initialState, reducerMap);

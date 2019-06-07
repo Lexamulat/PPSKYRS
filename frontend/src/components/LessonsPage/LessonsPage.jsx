@@ -28,7 +28,7 @@ export default class LessonsPage extends React.Component {
 
         onGetLessons: PropTypes.func.isRequired,
 
-        getLessons: PropTypes.object,
+        getLessons: PropTypes.array,
         getLessonsError: PropTypes.object,
         getLessonsProcessing: PropTypes.bool,
 
@@ -83,12 +83,10 @@ export default class LessonsPage extends React.Component {
 
     renderPoints = () => {
         const mas = [];
-        for (let i = 0; i < 50; i++) {
-            mas.push(i);
-        }
+        const { login } = this.props;
+        const { id } = login
 
         const { lessons } = this.state;
-        console.log("TCL: LessonsPage -> renderPoints -> lessons", lessons)
 
         return (
             <Fragment>
@@ -96,6 +94,7 @@ export default class LessonsPage extends React.Component {
                     return (
                         <LessonItem
                             key={i}
+                            showEditBtns={id == el.userId}
                             {...el}
                         />
 
@@ -113,7 +112,7 @@ export default class LessonsPage extends React.Component {
 
     sendCreateLesson = (name, lessonType, year, location, description) => {
         this.props.onCreateLesson(name, lessonType, year, location, description);
-        this.toggleCreateLessonDialog();
+        // this.toggleCreateLessonDialog();
     }
 
     renderCreateReportDialog = () => {
@@ -126,6 +125,7 @@ export default class LessonsPage extends React.Component {
                 onClose={this.toggleCreateLessonDialog}
                 onAction={this.toggleCreateLessonDialog}
                 submitAction={this.sendCreateLesson}
+                toggleCreateAction={this.toggleCreateLessonDialog}
             />
         )
     }
