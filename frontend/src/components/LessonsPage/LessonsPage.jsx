@@ -92,11 +92,11 @@ export default class LessonsPage extends React.Component {
 
         return (
             <Fragment>
-                {mas.map((el, i) => {
+                {lessons.map((el, i) => {
                     return (
                         <LessonItem
                             key={i}
-                            type='rus'
+                            {...el}
                         />
 
                     )
@@ -111,22 +111,21 @@ export default class LessonsPage extends React.Component {
         this.setState({ isCreateDialogVisible: !isCreateDialogVisible })
     }
 
-    sendCreateLesson = () => {
-        console.log('send')
+    sendCreateLesson = (name, lessonType, year, location, description) => {
+        this.props.onCreateLesson(name, lessonType, year, location, description);
+        this.toggleCreateLessonDialog();
     }
 
     renderCreateReportDialog = () => {
         const { isCreateDialogVisible } = this.state;
         if (!isCreateDialogVisible) return;
 
-
-        console.log('2')
-
         return (
             <ShowResultDialog
                 title={'Create lesson'}
                 onClose={this.toggleCreateLessonDialog}
                 onAction={this.toggleCreateLessonDialog}
+                submitAction={this.sendCreateLesson}
             />
         )
     }

@@ -79,6 +79,7 @@ td {
   justify-content: flex-end;
   margin-right: 2rem;
   cursor: pointer;
+  position: relative;
 }
 .createBtn {
   font-size: 1.5rem;
@@ -88,4 +89,13 @@ td {
 
 .labelClassName {
   bottom: 1.7rem !important;
+}
+.errText {
+  position: absolute;
+  right: 15rem;
+  font-size: 0.8rem;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

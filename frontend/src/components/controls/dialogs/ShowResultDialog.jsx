@@ -11,9 +11,6 @@ import {
 } from 'components/controls';
 
 
-import LangModDropDown from 'components/LangModDropDown/LangModDropDown';
-
-
 import styles from './ShowResultDialog.scss';
 
 export default class ShowResultDialog extends Component {
@@ -39,7 +36,8 @@ export default class ShowResultDialog extends Component {
             lessonType: '',
             year: '',
             location: '',
-            description: ''
+            description: '',
+            isErrorShown: false
         };
     }
 
@@ -49,15 +47,9 @@ export default class ShowResultDialog extends Component {
 
     handleFieldChange(fieldKey, { target: { value } }) {
         this.setState({
-            [fieldKey]: value
+            [fieldKey]: value,
+            isErrorShown: false
         });
-    }
-
-
-
-    handleSubmit() {
-        const { email, pass, rememberMe } = this.state;
-        this.props.onLogin(email, pass, rememberMe);
     }
 
 
@@ -65,14 +57,9 @@ export default class ShowResultDialog extends Component {
 
         let newState = Object.assign({}, this.state);
 
+        newState.isErrorShown = false
+        newState[field] = e.target.value;
 
-        if (field === 'day' || field === 'month' || field === 'year') {
-            newState = calcDateState(field, e.target.value, newState);
-        } else {
-            newState[field] = e.target.value;
-        }
-
-        newState.percentage = calcPercentage(newState, NUM_OF_CALCED_STATE_FIELDS, EXCLUDE);
 
         this.setState({
             ...newState
@@ -80,8 +67,27 @@ export default class ShowResultDialog extends Component {
 
     }
 
+    handleSubmit = () => {
+        const { name, lessonType, year, location, description } = this.state;
 
 
+        if (this.isNeedToShowError(name, lessonType, year, location, description)) {
+            this.setState({ isErrorShown: true })
+        } else {
+            this.props.submitAction(name, lessonType, year, location, description)
+        }
+    }
+
+    isNeedToShowError(name, lessonType, year, location, description) {
+        let boolVal = false;
+
+        Object.keys(arguments).forEach(el => {
+            if (arguments[el] == '') {
+                boolVal = true
+            }
+        });
+        return boolVal
+    }
 
     render() {
         const {
@@ -92,12 +98,11 @@ export default class ShowResultDialog extends Component {
             data
         } = this.props;
 
-        const { name, lessonType, year, location, description } = this.state;
+        const { name, lessonType, year, location, description, isErrorShown } = this.state;
 
         const titleText = title || '';
         const textClassName = classNames(styles.text, textClass);
 
-        console.log('LOC', loc('lessonType'))
 
         return (
             <DashboardDialogForm onClose={this.handleAction}
@@ -115,11 +120,7 @@ export default class ShowResultDialog extends Component {
                     processing={false}
                     clientValidate={() => { }}
                 >
-                    {/* <FormFieldWrapper>
-                        <div className={styles.formTitle}>
-                            <div>{loc('welcome-back')}</div>
-                        </div>
-                    </FormFieldWrapper> */}
+
 
                     <FormTextField
                         fieldKey={'name'}
@@ -175,7 +176,19 @@ export default class ShowResultDialog extends Component {
                     />
 
                     <div className={styles.create}>
-                        <span className={styles.createBtn}>Create</span>
+                        {isErrorShown &&
+                            <span
+                                className={styles.errText}
+                            >
+                                All fields are required
+                            </span>
+                        }
+                        <span
+                            className={styles.createBtn}
+                            onClick={this.handleSubmit}
+                        >
+                            Create
+                            </span>
                     </div>
 
 

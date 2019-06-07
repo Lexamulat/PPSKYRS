@@ -107,7 +107,11 @@ export default {
     'lesson-type': 'lesson-type',
     'name': 'name',
     'location': 'Your location',
-    'description': 'Description'
+    'description': 'Description',
+    'math': 'Mathematics',
+    'rus': 'Russian language'
+
+
 
 
 };

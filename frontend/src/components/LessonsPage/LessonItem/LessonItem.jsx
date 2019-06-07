@@ -27,13 +27,12 @@ export default class LessonItem extends React.Component {
         };
     }
 
-    routeImg = () => {
-        const { type } = this.props;
-        if (type == MATH)
+    routeImg = (lessonType) => {
+        if (lessonType == MATH)
             return (
                 <div className={styles.math}></div>
             )
-        if (type == RUS) {
+        if (lessonType == RUS) {
             return (
                 <div className={styles.rus}></div>
             )
@@ -64,33 +63,22 @@ export default class LessonItem extends React.Component {
 
     render() {
 
-
+        const { name, lessonType, year, location, description } = this.props
         return (
             <div
                 className={styles.itemWrapper}
             >
                 <div className={styles.imgPart}>
-                    {this.routeImg()}
+                    {this.routeImg(lessonType)}
                 </div>
                 <div className={styles.textPart}>
-                    <div className={styles.nameLine}>Иван</div>
+                    <div className={styles.nameLine}>{name}</div>
                     <div className={styles.yearSity}>
-                        <span className={styles.year}>21годssssssssssu</span>
-                        <span className={styles.sity}>осква, Тsssssssssssssssssssssssssssssекстильщики, Юго-Восточный административный округ</span>
+                        <span className={styles.year}>{year}</span>
+                        <span className={styles.sity}>{location}</span>
                     </div>
                     <div className={styles.description}>
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvdddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
-                        scccccccccccccccccccccccvddddddddddddddddscccccccccccccccccccccccvdddddddddddddddd
+                        {description}
                     </div>
                 </div>
                 {this.renderEditBtns()}

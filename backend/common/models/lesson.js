@@ -91,8 +91,12 @@ module.exports = function (Lesson) {
 async function getLessons(options) {
     const userInstance = await getCurrentUserFromContext(app, options);
 
-    console.log('get lessons userInstance userInstance', userInstance)
-    return 'get lessons'
+
+    const lessons = await app.models.Lesson.find();
+    console.log("TCL: getLessons -> lessons", lessons)
+
+    // console.log('get lessons userInstance userInstance', userInstance)
+    return lessons
 }
 async function getLessonById(options, id) {
     const userInstance = await getCurrentUserFromContext(app, options);
@@ -103,7 +107,17 @@ async function getLessonById(options, id) {
 async function createLesson(options, name, lessonType, year, location, description) {
     const userInstance = await getCurrentUserFromContext(app, options);
 
-    console.log('createLesson')
+
+    if (!userInstance) {
+        throw CustomError.information('cannot-get-user-inst-for-create-lesson');
+    }
+
+    console.log('createLesson', userInstance, name, lessonType, year, location, description);
+
+    const lessonInstance = await app.models.Lesson.create([{
+        name, lessonType, year, location, description, userId: userInstance.id
+    }]);
+
     return 'createLesson'
 }
 async function editLesson(options, name, lessonType, year, location, description) {
