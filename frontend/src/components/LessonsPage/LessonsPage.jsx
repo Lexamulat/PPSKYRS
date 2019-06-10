@@ -7,7 +7,7 @@ import {
 } from 'components/controls';
 
 
-import LessonItem from './LessonItem/LessonItem';
+import LessonItemContainer from './LessonItem/LessonItemContainer';
 
 import styles from './LessonsPage.scss';
 
@@ -54,7 +54,21 @@ export default class LessonsPage extends React.Component {
         if (!this.props.getLessons && nextProps.getLessons) {
             this.writeInfoToState(nextProps.getLessons)
         }
+        if (!this.props.deleteLesson && nextProps.deleteLesson) {
+            this.props.onGetLessons();
+        }
+        if (!this.props.editLesson && nextProps.editLesson) {
+
+            console.log("_______WAS EDITED")
+            this.props.onGetLessons();
+        }
+        if (!this.props.createLesson && nextProps.createLesson) {
+            this.props.onGetLessons();
+        }
+        
+        
     }
+
 
     writeInfoToState(lessons) {
         this.setState({ lessons })
@@ -82,9 +96,10 @@ export default class LessonsPage extends React.Component {
     }
 
     renderPoints = () => {
-        const mas = [];
         const { login } = this.props;
-        const { id } = login
+
+        if (!login) return
+        const { id } = login;
 
         const { lessons } = this.state;
 
@@ -92,10 +107,11 @@ export default class LessonsPage extends React.Component {
             <Fragment>
                 {lessons.map((el, i) => {
                     return (
-                        <LessonItem
+                        <LessonItemContainer
                             key={i}
                             showEditBtns={id == el.userId}
                             {...el}
+                            handleDeleteLessonAction={this.handleDeleteLesson}
                         />
 
                     )
@@ -103,6 +119,10 @@ export default class LessonsPage extends React.Component {
             </Fragment>
 
         )
+    }
+
+    handleDeleteLesson = (id) => {
+        this.props.onDeleteLesson(id)
     }
 
     toggleCreateLessonDialog = () => {

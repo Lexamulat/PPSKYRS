@@ -43,7 +43,10 @@ export default class ShowResultDialog extends Component {
     }
 
     componentWillMount() {
-        console.log('will')
+        const { name, lessonType, year, location, description } = this.props;
+        if (name) {
+            this.setState({ name, lessonType, year, location, description })
+        }
     }
 
     handleFieldChange(fieldKey, { target: { value } }) {
@@ -102,9 +105,9 @@ export default class ShowResultDialog extends Component {
     }
 
     renderConfirmDialog = () => {
-
+        const { name } = this.props
         const { isConfirmDialogVisible } = this.state;
-        if (!isConfirmDialogVisible) return
+        if (!isConfirmDialogVisible || name) return
 
         return (
             <ConfirmDialog
@@ -124,7 +127,7 @@ export default class ShowResultDialog extends Component {
             title,
             visible,
             textClass,
-            data
+            deleteDialog
         } = this.props;
 
         const { name, lessonType, year, location, description, isErrorShown } = this.state;

@@ -19,8 +19,11 @@ export const SET_PASSWORD = 'auth/SET_PASSWORD';
 
 export const GET_LESSONS = 'auth/GET_LESSONS';
 export const CREATE_LESSON = 'auth/CREATE_LESSON';
+export const DELETE_LESSON = 'auth/DELETE_LESSON';
 
+export const GET_LESSON_BY_ID = 'auth/GET_LESSON_BY_ID';
 
+export const EDIT_LESSON_BY_ID = 'auth/EDIT_LESSON_BY_ID';
 
 export function getUserRole() {
     return {
@@ -153,3 +156,35 @@ export function createLesson(name, lessonType, year, location, description) {
     };
 }
 
+export function deleteLesson(id) {
+    return {
+        type: DELETE_LESSON,
+        httpRequest: {
+            method: 'del',
+            path: '/lesson/deleteLesson',
+            data: { id }
+        }
+    };
+}
+
+export function getLessonById(id) {
+    return {
+        type: GET_LESSON_BY_ID,
+        httpRequest: {
+            method: 'get',
+            params: { id },
+            path: '/lesson/getLessonById',
+        }
+    };
+}
+
+export function editLessonById(id, name, lessonType, year, location, description) {
+    return {
+        type: EDIT_LESSON_BY_ID,
+        httpRequest: {
+            method: 'post',
+            data: { id, name, lessonType, year, location, description },
+            path: '/lesson/editLesson',
+        }
+    };
+}

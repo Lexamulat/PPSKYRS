@@ -28,7 +28,7 @@ module.exports = function (Lesson) {
     Lesson.getLessons = getLessons;
 
     Lesson.remoteMethod('getLessonById', {
-        http: { path: '/getLessonById', verb: 'post' },
+        http: { path: '/getLessonById', verb: 'get' },
         accepts: [
             { arg: 'options', type: 'object', http: 'optionsFromRequest' },
             { arg: 'id', type: 'number', required: true },
@@ -59,6 +59,7 @@ module.exports = function (Lesson) {
         http: { path: '/editLesson', verb: 'post' },
         accepts: [
             { arg: 'options', type: 'object', http: 'optionsFromRequest' },
+            { arg: 'id', type: 'number', required: true },
             { arg: 'name', type: 'string', required: true },
             { arg: 'lessonType', type: 'string', required: true },
             { arg: 'year', type: 'string', required: true },
@@ -93,16 +94,15 @@ async function getLessons(options) {
 
 
     const lessons = await app.models.Lesson.find();
-    console.log("TCL: getLessons -> lessons", lessons)
 
     // console.log('get lessons userInstance userInstance', userInstance)
     return lessons
 }
 async function getLessonById(options, id) {
     const userInstance = await getCurrentUserFromContext(app, options);
+    const lessons = await app.models.Lesson.findById(id);
 
-    console.log('get lesson by id')
-    return 'get lesson by id'
+    return lessons
 }
 async function createLesson(options, name, lessonType, year, location, description) {
     const userInstance = await getCurrentUserFromContext(app, options);
@@ -112,7 +112,6 @@ async function createLesson(options, name, lessonType, year, location, descripti
         throw CustomError.information('cannot-get-user-inst-for-create-lesson');
     }
 
-    console.log('createLesson', userInstance, name, lessonType, year, location, description);
 
     const lessonInstance = await app.models.Lesson.create([{
         name, lessonType, year, location, description, userId: userInstance.id
@@ -120,16 +119,22 @@ async function createLesson(options, name, lessonType, year, location, descripti
 
     return 'createLesson'
 }
-async function editLesson(options, name, lessonType, year, location, description) {
+async function editLesson(options, id, name, lessonType, year, location, description) {
     const userInstance = await getCurrentUserFromContext(app, options);
 
-    console.log('editLesson')
+    const lessonInstance = await app.models.Lesson.findById(id);
+    if(!lessonInstance){
+        throw CustomError.information('cannot-get-lesson-by-id-for-edit');
+
+    }
+    await lessonInstance.updateAttributes({name, lessonType, year, location, description});
+
     return 'editLesson'
 }
 
 async function deleteLesson(options, id) {
     const userInstance = await getCurrentUserFromContext(app, options);
+    await app.models.Lesson.destroyById(id);
 
-    console.log('deleteLesson')
     return 'deleteLesson'
 }

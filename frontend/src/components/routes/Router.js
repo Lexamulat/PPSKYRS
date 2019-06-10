@@ -34,7 +34,6 @@ export default class Router extends Component {
                         exact
                         path='/'
                         // component={LessonsPageContainer}
-
                         component={TeacherLendingContainer}
                     />
                     <RoleRoute
